@@ -2,6 +2,8 @@ package com.example.pr9_osokin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -51,5 +53,28 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Button button = findViewById(R.id.button);
             button.setText("ПАУЗА");
         }
+    }
+    public void OnSensorChaged(SensorEvent event){
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+            float [] values = event.values;
+            float x = values [0];
+            float y = values [1];
+            float z = values [2];
+            float accelationSquareRoot = (x * x + y * y + z * z)
+                    /(SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
+            long actualTime = System.currentTimeMillis();
+            if (accelationSquareRoot >= 2){
+                if (actualTime - lastUpdate < 200){
+                    return;
+                }
+                lastUpdate = actualTime;
+                count++;
+                text.setText(String.valueOf(count));
+            }
+        }
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy){
+
     }
 }
