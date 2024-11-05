@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         text.setText(String.valueOf(count));
         sensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
         sensorManager.registerListener((SensorEventListener) this,
-                sensorManager.getDefaultSensor(Sensor, TYPE_ACCELEROMETR),
+                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
         lastUpdate = System.currentTimeMillis();
     }
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onResume(){
         super.onResume();
         sensorManager.registerListener((SensorEventListener) this,
-                sensorManager.getDefaultSensor(Sensor, TYPE_ACCELEROMETR),
+                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
     }
     @Override
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             button.setText("ПАУЗА");
         }
     }
-    public void OnSensorChaged(SensorEvent event){
+    public void onSensorChanged(SensorEvent event){
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
             float [] values = event.values;
             float x = values [0];

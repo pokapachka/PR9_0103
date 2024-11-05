@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00b7ff"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -46,10 +47,11 @@
         android:layout_marginEnd="75dp"
         android:background="@drawable/radius_button"
         android:onClick="OnStoped"
-        android:text="ПАУЗА"
+        android:text="СТАРТ"
         android:textColor="#00b7ff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_height="60dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
